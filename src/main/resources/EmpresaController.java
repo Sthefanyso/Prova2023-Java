@@ -29,7 +29,11 @@ public class EmpresaController {
         return ResponseEntity.ok().body(empresa);
     }
     
-    
+    @DeleteMapping("{id}")
+    public ResponseEntity<Void> deleteEmpresa(@PathVariable int id){
+        empresaService.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
     
 
 }
