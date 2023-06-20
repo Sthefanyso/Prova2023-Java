@@ -1,6 +1,10 @@
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+
+import com.fatec.provajava.services.EmpresaService;
 
 public class EmpresaController {
     
@@ -15,5 +19,17 @@ public class EmpresaController {
             .toUri();
 
         return ResponseEntity.created(location).body(newEmpresa);
+    
+    @Autowired
+    private EmpresaService empresaService;     
+
+    @GetMapping("Empresas")
+    public ResponseEntity<List<Empresa>> getEmpresa(){
+        list<Empresa> Empresas = empresaService.getEmpresa();
+        return ResponseEntity.ok().body(empresa);
     }
+    
+    
+    
+
 }
